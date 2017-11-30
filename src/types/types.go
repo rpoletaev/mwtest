@@ -1,10 +1,10 @@
 package types
 
 type Response struct {
-	Name          string `json:"name"`
-	Default       bool   `json:"default"`
-	Url           string `json:"url"`
-	GmailLogo     string `json:"gmailLogo"`
-	HangoutslLogo string `json:"hangoutsLogo"`
-	DriveLogo     string `json:"driveLogo"`
+	Name          string `json:"name" xml:"name"`
+	Default       bool   `json:"default" xml:"default"`
+	Url           string `json:"url" xml:"url"`
+	GmailLogo     string `json:"gmailLogo" xml:"gmailLogo"`
+	HangoutslLogo string `json:"hangoutsLogo" xml:"hangoutsLogo"`
+	DriveLogo     string `json:"driveLogo" xml:"driveLogo"`
 }

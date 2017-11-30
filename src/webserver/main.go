@@ -4,21 +4,22 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/rpoletaev/mwtst/src/types"
+	"github.com/rpoletaev/mwtest/src/types"
 
-	"github.com/rpoletaev/mwtst/src/middleware"
+	"github.com/rpoletaev/mwtest/src/middleware"
 )
 
 func main() {
 	http.Handle("/",
-		middleware.Autch.Authorization(http.HandlerFunc(MainHandlerFunc)))
-	// middleware.Compress.Compression(
-	// 	middleware.Convertor.Convertation(
-	// http.HandlerFunc(MainHandlerFunc),
+		middleware.Autch.Authorization(
+			middleware.Compress.Compression(
+				// 	middleware.Convertor.Convertation(
+				http.HandlerFunc(MainHandlerFunc),
+			),
+		),
 	// 	),
-	// ),
-	// 	),
-	// )
+	)
+
 	middleware.Autch.SetBasicAuth(`myname`, `pass123`)
 	http.ListenAndServe(":3000", nil)
 }
